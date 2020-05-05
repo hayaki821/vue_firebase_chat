@@ -11,6 +11,7 @@
   </b-jumbotron>
 </template>
 <script>
+/* eslint-disable */
 export default {
   props: {
     show: {
@@ -29,8 +30,23 @@ export default {
       this.$emit("closeNewRoom");
     },
     onSubmit() {
-      this.$emit("save", this.roomName);
+      this.roomName = this.roomName.replace(/\s+/g, "");
+      var reg = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~][\s\S]/g);
+      if (reg.test(this.roomName) || !this.roomName) {
+        alert("特殊文字が含まれています");
+      } else {
+        this.$emit("save", this.roomName);
+      }
+    },
+    invalidFeedback(index, data = null) {
+      const valid = this.fields_data[Number(index)].invalid || [];
+      // バリデーションルールはここで設定
+      if (!Array.isArray(valid)) return "";
+      if (valid.indexOf("require") >= 0 && !!data) {
+        return "必須入力です";
+      }
     }
   }
 };
+/* eslint-disable */
 </script>
