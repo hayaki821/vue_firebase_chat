@@ -19,6 +19,10 @@ npm run build
 ```
 npm run lint
 ```
+### ドメイン
+```
+https://vuefirebasechat-bc957.web.app/
+```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

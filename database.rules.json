@@ -3,7 +3,7 @@
     "messages": {
       ".read": true,
       ".write": "auth !== null",
-      "$room": {
+      "$room_id": {
         ".read": true,
         ".write": "auth !== null",
         "$messageId": {
@@ -11,6 +11,16 @@
           "text": {
             ".validate": "newData.isString() && newData.val().length < 300" // textデータは300文字以下でないといけない
           }
+        }
+      }
+    },
+    "room_names": {
+      ".read": true,
+      ".write": "auth !== null",
+      "$room_id": {
+        "roomname": {
+          ".read": true,
+          ".write": "auth !== null" // textデータは300文字以下でないといけない
         }
       }
     }
