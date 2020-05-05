@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "messages": {
+      ".read": true,
+      ".write": "auth !== null",
+      "$room": {
+        ".read": true,
+        ".write": "auth !== null",
+        "$messageId": {
+          ".validate": "newData.child('name').val() === auth.token.name", // 認証時のnameデータと書き込み時のnameデータは一致していないといけない
+          "text": {
+            ".validate": "newData.isString() && newData.val().length < 300" // textデータは300文字以下でないといけない
+          }
+        }
+      }
+    }
+  }
+}
